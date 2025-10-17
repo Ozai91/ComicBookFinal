@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../assets/Logo.png";
+import Logo from "../assets/LogoMarvel.png";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { AiOutlineShopping } from "react-icons/ai";
 import { Link } from "react-router-dom";
