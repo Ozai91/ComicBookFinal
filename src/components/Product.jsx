@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import fantastic from "../assets/fantastic2025.png";
 import predator from "../assets/predator.png";
@@ -16,7 +16,9 @@ import { useCart } from "../contexts/CartContext";
 
 const Product = () => {
   const { addToCart } = useCart();
-  const books = [
+  const [clickedIndex, setClickedIndex] = useState(null); // Track which button was clicked
+
+    const books = [
     {
       id: 1,
       cover: ironman,
@@ -115,12 +117,18 @@ const Product = () => {
     },
   ];
 
+  const handleAddToCart = (book, index) => {
+    addToCart(book);
+    setClickedIndex(index);
+    setTimeout(() => setClickedIndex(null), 100); // Reset after animation
+  };
+
   return (
     <div>
       <h1 className="px-5 mt-5 font-bold text-lg md:text-xl lg:text-2xl mx-auto text-red-600">
         NEW THIS WEEK
       </h1>
-      <main className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 justify-items-center p-5  gap-x-3 gap-y-6 md:gap-x-4 md:gap-y-7 lg:gap-x-5 lg:gap-y-8">
+      <main className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 justify-items-center p-5 gap-x-3 gap-y-6 md:gap-x-4 md:gap-y-7 lg:gap-x-5 lg:gap-y-8">
         {books.map((book, index) => (
           <div
             key={index}
@@ -128,7 +136,7 @@ const Product = () => {
           >
             <div className="flex flex-col flex-1 cursor-pointer">
               <img
-                className="rounded-t-md hover:scale-[1.02]"
+                className="rounded-t-md hover:scale-[1.02] transition-transform duration-200"
                 src={book.cover}
                 alt={book.title}
               />
@@ -139,17 +147,22 @@ const Product = () => {
                 Author: {book.author}
               </h3>
               <p className="font-bold hover:text-red-400 m-1 text-sm md:text-[15px] lg:text-[17px]">
-                Rating:{book.rating}/10
+                Rating: {book.rating}/10
               </p>
               <p className="font-bold text-red-600 m-1 text-sm md:text-[15px] lg:text-[20px]">
                 Price: {book.price}$
               </p>
               <div className="flex-1 cursor-default mb-2"></div>
               <button
-                onClick={() => addToCart(book)}
-                className="flex items-center justify-center my-2 m-auto px-7 py-2 border-2 border-red-600 rounded-md hover:scale-[1.02] hover:bg-red-100 text-[13px] md:text-[15px] lg:text-[16px] mt-auto"
+                onClick={() => handleAddToCart(book, index)}
+                className={`flex items-center justify-center my-2 m-auto px-7 py-2 border-2 border-red-600 rounded-md text-[13px] md:text-[15px] lg:text-[16px] mt-auto
+                  transition-transform duration-200 ${
+                    clickedIndex === index
+                      ? "scale-110 bg-red-200 text-red-700"
+                      : "hover:scale-[1.05] hover:bg-red-100"
+                  }`}
               >
-                <MdAddShoppingCart />
+                <MdAddShoppingCart className="mr-1" />
                 Add to Cart
               </button>
             </div>
