@@ -3,7 +3,7 @@ import Banner from "../components/Banner";
 import spideMan from "../assets/NoWayHome.png";
 import IronMan from "../assets/IronExtremis.png";
 import DoctorStrange from "../assets/DRtheOath.png";
-import Endgame from "../assets/Endgame.png";
+import Endgame from "../assets/EndGame.png";
 
 const Home = () => {
   return (
