@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../assets/logo.png";
+import Logo from "../assets/logo.png";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { AiOutlineShopping } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <Link to="/">
-            <img className="w-36" src={logo} alt="logo" />
+            <img className="w-36" src={Logo} alt="logo" />
           </Link>
 
           {/* Links */}
