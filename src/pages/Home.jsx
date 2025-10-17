@@ -3,7 +3,7 @@ import Banner from "../components/Banner";
 import spideMan from "../assets/NoWayHome.png";
 import IronMan from "../assets/IronExtremis.png";
 import DoctorStrange from "../assets/DRtheOath.png";
-import Avengers from "../assets/Endgame.png";
+import Endgame from "../assets/Endgame.png";
 
 const Home = () => {
   return (
@@ -32,7 +32,7 @@ const Home = () => {
             },
             {
               title: "Avengers: Endgame Prelude",
-              img: Avengers,
+              img: Endgame,
             },
           ].map((comic, index) => (
             <div
